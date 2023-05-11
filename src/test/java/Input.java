@@ -29,7 +29,7 @@ public class Input {
     }
 
     @Test
-    public void InputTests(){
+    public void inputTests(){
         WebElement input;
         input = driver.findElement(By.tagName("input"));
         input.sendKeys("12");

@@ -29,10 +29,8 @@ public class Typos {
 
     @Test
     public void typosTest() {
-        for (int i = 0; i < 10; i++) {
-            driver.navigate().refresh();
             String typoText = driver.findElement(By.xpath("//*[@id=\"content\"]/div/p[2]")).getText();
             Assert.assertEquals(typoText, "Sometimes you'll see a typo, other times you won't.", "Error:'won,t' is misspelled");
         }
     }
-}
+

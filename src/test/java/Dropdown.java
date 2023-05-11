@@ -33,27 +33,14 @@ public class Dropdown {
 
     @Test
     public void dropDown() {
-//        WebElement dropdown = driver.findElement(By.id("dropdown"));
-//        Select select = new Select(dropdown);
-//        List<WebElement> optionsList = select.getAllSelectedOptions();
-//        List<String> optionTexts = new ArrayList<>();
-//        for (WebElement option : optionsList) {
-//            optionTexts.add(option.getText());
-//        }
-//        String[] options = {"Option 1","Option 2"};
-//        Assert.assertEquals(optionTexts, options);
-//        optionsList.get(0).click();
-//        Assert.assertTrue(optionsList.get(0).isSelected());
-//        optionsList.get(1).click();
-//        Assert.assertTrue(optionsList.get(1).isSelected());
 
         WebElement dropdown = driver.findElement(By.cssSelector("#dropdown"));
         Select select = new Select(dropdown);
         List<WebElement> optionsList = select.getOptions();
-        optionsList.get(0).click();
-        Assert.assertTrue(optionsList.get(0).isSelected());
-        optionsList.get(1).click();
+        select.selectByVisibleText("Option 1");
         Assert.assertTrue(optionsList.get(1).isSelected());
+        select.selectByVisibleText("Option 2");
+        Assert.assertTrue(optionsList.get(2).isSelected());
         Assert.assertEquals(optionsList.size(), 3);
         Assert.assertEquals(optionsList.get(0).getText(), "Please select an option");
         Assert.assertEquals(optionsList.get(1).getText(), "Option 1");
@@ -65,9 +52,5 @@ public class Dropdown {
         select.selectByVisibleText("Option 2");
         Assert.assertEquals(select.getFirstSelectedOption().getText(), "Option 2");
 
-
-
     }
-
-
 }
