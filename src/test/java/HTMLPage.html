@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Первая страница</title>
+</head>
+<style>
+    table, th, td {
+        border:1px solid black;
+    }
+</style>
+<body>
+<p>Добро пожаловать!</p>
+
+
+<table style="width:100%">
+<tr>
+
+    <td>Имя</td>
+    <td>Фамилия</td>
+    <td>Возраст</td>
+</tr>
+<tr>
+    <td>Анна</td>
+    <td>Иванова</td>
+    <td>15</td>
+
+</tr>
+    <tr>
+        <td>Иван</td>
+        <td>Сидоров</td>
+        <td>16</td>
+
+    </tr>
+
+    <form action="/action_page.php">
+        <label for="username">Email:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="pwd">Пароль:</label><br>
+        <input type="password" id="pwd" name="pwd"><br><br>
+        <input type="submit" value="Войти">
+    </form>
+    <br><br>
+
+    <form>
+        <input type="checkbox" id="user1" name="user1" value="parent">
+        <label for="user1"> Родитель</label><br>
+        <input type="checkbox" id="user2" name="user2" value="student">
+        <label for="user2"> Ученик</label><br>
+    </form>
+    <br><br>
+    <form action="/action_page.php">
+        <label for="username">Выберите пользователя:</label>
+        <select name="users" id="users">
+            <option value="mum">Mum</option>
+            <option value="dad">Dad</option>
+            <option value="child">Child</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Подтвердить">
+    </form>
+    <br><br>
+
+
+
+
+    <img src="img_school.jpeg" width="349" height="144">
+    <br><br>
+
+
+    <a href="http://sch16.minsk.edu.by/">Visit our new website!</a>
+
+    <h2>Ученики класса 9"A"</h2>
+
+
+
+
+</body>
+</html>
