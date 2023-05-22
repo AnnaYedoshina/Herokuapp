@@ -30,27 +30,27 @@ public class DynamicControls {
         driver.quit();
 
     }
-    public boolean isCheckboxIsNotPresent(){
+
+    public boolean isCheckboxIsNotPresent() {
         List<WebElement> checkboxes = driver.findElements(By.id("checkbox"));
         return checkboxes.size() == 0;
 
     }
+
     @Test
     public void dynamicControlTests() {
         WebElement removeButton = driver.findElement(By.xpath("//button[text() = 'Remove']"));
         removeButton.click();
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        WebElement isGone = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
                 ("//button[@autocomplete='off']//following-sibling::p")));
         Assert.assertTrue(isCheckboxIsNotPresent());
-        boolean input = driver.findElement(By.cssSelector("input[type=text]"))
-                .getAttribute("disabled") =="disabled";
+        WebElement input = driver.findElement(By.cssSelector("input[type=text]"));
+        Assert.assertFalse(input.isEnabled());
         WebElement enableButton = driver.findElement(By.xpath("//button[text() = 'Enable']"));
         enableButton.click();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        WebElement itsEnabled = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
                 ("//button[@autocomplete='off']//following-sibling::p")));
-        boolean input1 = driver.findElement(By.cssSelector("input[type=text]"))
-                .getAttribute("disabled") =="false";
+        Assert.assertTrue(input.isEnabled());
     }
 }

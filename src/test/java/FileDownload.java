@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -15,6 +16,7 @@ public class FileDownload {
     private static final String URL = "http://the-internet.herokuapp.com/download";
     private WebDriver driver;
     private WebDriverWait wait;
+    private ChromeOptions chromeOptions;
 
     public static boolean isFileExists(File file) {
         return file.isFile();
@@ -36,18 +38,13 @@ public class FileDownload {
 
     @Test
     public void fileDownloadTest() {
-        WebElement link = driver.findElement(By.cssSelector("//a[text() = 'text.txt']"));
+        WebElement link = driver.findElement(By.xpath("//a[text() = 'text.txt']"));
         link.click();
         ChromeOptions options = new ChromeOptions();
         options.setCapability("download.default_directory", System.getProperty("user.dir") + "/target/downloads");
         String filePath = "System.getProperty(user.dir) + /target/downloads";
         File file = new File(filePath);
-
-        if (isFileExists(file)) {
-            System.out.println("File exists!!");
-        } else {
-            System.out.println("File doesn't exist or program doesn't have access " +
-                    "to the file");
-        }
+        Assert.assertTrue(file.exists());
     }
 }
+

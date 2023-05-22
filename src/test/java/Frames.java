@@ -12,6 +12,7 @@ import java.time.Duration;
 public class Frames {
     private static final String URL = "http://the-internet.herokuapp.com/frames";
     private WebDriver driver;
+
     @BeforeClass
     public void setUp() {
         driver = new ChromeDriver();
@@ -33,6 +34,6 @@ public class Frames {
         WebElement frame = driver.findElement(By.id("tinymce"));
         String frameText = frame.getText();
         Assert.assertEquals(frameText, "Your content goes here.");
-
+        driver.switchTo().defaultContent();
     }
 }

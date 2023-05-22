@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -37,8 +38,9 @@ public class FileUpload {
         driver.findElement(By.id("file-submit")).click();
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h3[text() = 'File Uploaded!']")));
-
-
+        WebElement fileName = driver.findElement(By.id("uploaded-files"));
+        fileName.getText();
+        Assert.assertEquals(fileName.getText(), "homework.txt");
     }
 
 }
